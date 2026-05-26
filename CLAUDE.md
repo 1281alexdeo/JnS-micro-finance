@@ -13,6 +13,10 @@ Read the following to get the full context of the project
 -@context/ai_interactions.md - Development workflow and AI collaboration guidelines
 -@context/current_feature.md - Current feature being developed
 
+## Screenshots
+Read this folder to refference screenshots for the UI of the application we're building.
+-@context/screenshots
+
 ## Development Commands
 
 ### Core Commands
