@@ -1,22 +1,6 @@
 # LoanTrack — Microfinance Loan Management System
 ## Product Requirements Document
 
-**Version:** 1.3 — Penalty Basis Corrected by Product Owner  
-**Date:** May 22, 2026  
-**Status:** Approved for Development
-
-> **Changelog v1.2 → v1.3**
-> One correction applied by the product owner:
-> - **Penalty basis corrected.** The Excel reference document was incorrect. The 5% late payment penalty is applied to the **current outstanding loan balance** at the time the penalty is applied — not the missed weekly payment amount. This applies uniformly to all penalty events (both manual late-payment flags and the auto-penalty triggered at new loan issuance on an overdue account). There is no longer a distinction between the two trigger types for calculation purposes.
-> Sections affected: §3.3, §4.4, §7.1, §7.2, §7.3 (Penalty model comment).
->
-> **Changelog v1.1 → v1.2**
-> Source loan schedule documents provided. Three structural corrections applied:
-> 1. Repayment cadence changed from monthly to weekly (48 instalments).
-> 2. Interest rate tiers corrected to stepped bands, not a sliding scale.
-> 3. Collateral field added (= Loan Repayment total).
-
----
 
 ## 1. Problem
 
