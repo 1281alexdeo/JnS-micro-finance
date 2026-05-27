@@ -45,11 +45,11 @@ export function Sidebar() {
                   <Link
                     href={item.href}
                     className={`
-                      block px-4 py-3 rounded-lg text-body font-medium transition-colors
+                      block pl-4 pr-3 py-3 rounded-lg text-body font-medium transition-colors
                       hover:bg-[var(--color-surface-muted)]
                       ${item.href === '/dashboard'
-                        ? 'bg-[var(--color-accent-subtle)] text-[var(--color-accent)]'
-                        : ''
+                        ? 'bg-[var(--color-accent-subtle)] border-l-2 border-[var(--color-accent)] text-[var(--color-accent)]'
+                        : 'border-l-2 border-transparent'
                       }
                     `}
                   >
