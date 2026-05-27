@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+:root {
+  --color-bg: #F7F6F3;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F0EEE9;
+  --color-border: #E4E1D9;
+  --color-border-strong: #C9C5BC;
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #6B6560;
+  --color-text-disabled: #A8A39D;
+  --color-accent: #1D6A63;
+  --color-accent-hover: #165550;
+  --color-accent-subtle: #EAF3F2;
+  --color-success: #2E7D52;
+  --color-success-bg: #EDFAF3;
+  --color-warning: #92600A;
+  --color-warning-bg: #FEF5E4;
+  --color-destructive: #B52A2A;
+  --color-destructive-bg: #FDF0F0;
+}
+
+.dark {
+  --color-bg: #1C1917;
+  --color-surface: #2A2623;
+  --color-surface-muted: #32302D;
+  --color-border: #44403C;
+  --color-border-strong: #57534E;
+  --color-text-primary: #F7F6F3;
+  --color-text-secondary: #D4D4D8;
+  --color-text-disabled: #71717A;
+  --color-accent: #4DD0E1;
+  --color-accent-hover: #38BDF8;
+  --color-accent-subtle: #0C4A6E;
+  --color-success: #4ADE80;
+  --color-success-bg: #14532D;
+  --color-warning: #FACC15;
+  --color-warning-bg: #713F12;
+  --color-destructive: #F87171;
+  --color-destructive-bg: #7F1D1D;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+}
+
+.font-display {
+  font-family: "Sora", sans-serif;
+}
+
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}
