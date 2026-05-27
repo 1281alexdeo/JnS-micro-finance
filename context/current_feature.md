@@ -4,20 +4,13 @@
 Main Dashboard UI - Phase 2: KPI Strip & Action Buttons
 
 ## Status
-Completed
+<!-- Not Started | In Progress | Completed-->
 
 ## Goals
-- [x] Implement page title "Dashboard" and timestamp
-- [x] Create primary and secondary action buttons (Export Week, New Customer, New Loan)
-- [x] Build KPI strip with 5 metric cards
-- [x] Implement responsive grid (4 columns desktop, 2 tablet, 1 mobile)
-- [x] Display KPI data from mock-data.ts DashboardData.kpis
-- [x] Format currency values as SBD X,XXX.XX with tabular nums
-- [x] Add dynamic validation for overdue count (>0 shows red text)
-- [x] Handle edge cases (zero values, large numbers)
+<!--  Goals and requirements -->
 
 ## Notes
-This is Phase 2 of 4 for the Main Dashboard UI feature. Building upon the layout from Phase 1, this phase introduces the KPI Strip with 5 metric cards and action buttons. The KPI strip must be responsive (4 columns desktop, 2 tablet, 1 mobile) and display real-time metrics from mock-data.ts.
+<!-- Any extra notes-->
 
 ## History
 <!-- Keep this updated. Earliest to latest-->
