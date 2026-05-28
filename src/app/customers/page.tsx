@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import {
   flexRender,
   getCoreRowModel,
@@ -11,10 +11,8 @@ import {
 } from '@tanstack/react-table'
 import { customers, type Customer } from '@/lib/mock-data'
 
-// Status type
 type Status = 'ALL' | 'ACTIVE' | 'OVERDUE' | 'COMPLETED' | 'NO_LOAN'
 
-// Status badge colors
 const statusColors = {
   ACTIVE: 'text-green-600 bg-green-50',
   OVERDUE: 'text-red-600 bg-red-50',
@@ -22,7 +20,6 @@ const statusColors = {
   NO_LOAN: 'text-gray-400 bg-gray-100'
 }
 
-// Status display text
 const statusText = {
   ACTIVE: 'Active',
   OVERDUE: 'Overdue',
@@ -31,64 +28,25 @@ const statusText = {
 }
 
 export default function CustomersPage() {
-  const [status, setStatus] = useState<Status>('ALL')
-  const [search, setSearch] = useState('')
+  const [statusValue, setStatusValue] = useState<Status>('ALL')
+  const [searchValue, setSearchValue] = useState('')
 
-  // Initialize from URL and update when URL changes
-  useEffect(() => {
-    const getStatusFromUrl = (): Status => {
-      const params = new URLSearchParams(window.location.search)
-      return (params.get('status') as Status) || 'ALL'
-    }
-
-    const getSearchFromUrl = (): string => {
-      const params = new URLSearchParams(window.location.search)
-      return params.get('search') || ''
-    }
-
-    setStatus(getStatusFromUrl())
-    setSearch(getSearchFromUrl())
-  }, [])
-
-  // Update URL when state changes
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-
-    if (status === 'ALL') {
-      params.delete('status')
-    } else {
-      params.set('status', status)
-    }
-
-    if (search === '') {
-      params.delete('search')
-    } else {
-      params.set('search', search)
-    }
-
-    const newUrl = `${window.location.pathname}?${params.toString()}`
-    window.history.replaceState({}, '', newUrl)
-  }, [status, search])
-
-  // Filter and search logic
   const filteredCustomers = useMemo(() => {
     return customers.filter(customer => {
-      const matchesStatus = status === 'ALL' || customer.status === status
-      const matchesSearch = search === '' ||
-        customer.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        customer.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        customer.referenceCode.toLowerCase().includes(search.toLowerCase())
+      const matchesStatus = statusValue === 'ALL' || customer.status === statusValue
+      const matchesSearch = searchValue === '' ||
+        customer.firstName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        customer.lastName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        customer.referenceCode.toLowerCase().includes(searchValue.toLowerCase())
       return matchesStatus && matchesSearch
     })
-  }, [status, search])
+  }, [statusValue, searchValue])
 
-  // Pagination state
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10
   })
 
-  // Table columns
   const columns = useMemo<ColumnDef<Customer, unknown>[]>(
     () => [
       {
@@ -163,23 +121,18 @@ export default function CustomersPage() {
     []
   )
 
-  // Initialize table
   const table = useReactTable({
     data: filteredCustomers,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     state: {
-      globalFilter: search,
-      columnFilters: [{ id: 'status', value: status }],
       pagination
     },
     onPaginationChange: setPagination,
     meta: {}
   })
 
-  // Get counts for filter tabs
   const counts = useMemo(() => ({
     all: customers.length,
     active: customers.filter(c => c.status === 'ACTIVE').length,
@@ -217,9 +170,9 @@ export default function CustomersPage() {
           {/* Status Filters */}
           <div className="flex flex-wrap gap-4">
             <button
-              onClick={() => setStatus('ALL')}
+              onClick={() => setStatusValue('ALL')}
               className={`text-sm font-medium pb-1 ${
-                status === 'ALL'
+                statusValue === 'ALL'
                   ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
@@ -227,9 +180,9 @@ export default function CustomersPage() {
               All ({counts.all})
             </button>
             <button
-              onClick={() => setStatus('ACTIVE')}
+              onClick={() => setStatusValue('ACTIVE')}
               className={`text-sm font-medium pb-1 ${
-                status === 'ACTIVE'
+                statusValue === 'ACTIVE'
                   ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
@@ -237,9 +190,9 @@ export default function CustomersPage() {
               Active ({counts.active})
             </button>
             <button
-              onClick={() => setStatus('OVERDUE')}
+              onClick={() => setStatusValue('OVERDUE')}
               className={`text-sm font-medium pb-1 ${
-                status === 'OVERDUE'
+                statusValue === 'OVERDUE'
                   ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
@@ -247,9 +200,9 @@ export default function CustomersPage() {
               Overdue ({counts.overdue})
             </button>
             <button
-              onClick={() => setStatus('COMPLETED')}
+              onClick={() => setStatusValue('COMPLETED')}
               className={`text-sm font-medium pb-1 ${
-                status === 'COMPLETED'
+                statusValue === 'COMPLETED'
                   ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
@@ -263,8 +216,8 @@ export default function CustomersPage() {
             <input
               type="text"
               placeholder="Search by name or reference"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               className="w-full md:w-64 pl-9 pr-4 py-2 border border-gray-300 rounded-md text-sm"
             />
             <svg
