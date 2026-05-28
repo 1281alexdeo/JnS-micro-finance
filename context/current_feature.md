@@ -1,24 +1,38 @@
 # Current Feature
 
 <!-- Feature name and short description -->
-Main Dashboard UI - Phase 4: Recent Activity & Portfolio Summary
+Customer Management UI - Phase 1: Customer List View
 
 ## Status
-Completed
+In Progress
 
 ## Goals
-- [x] Implement Recent Activity card with list of last 5 portfolio events
-- [x] Create colored indicators for different event types (green for payments/loans, red for penalties)
-- [x] Add relative timestamps (e.g., "Yesterday") for activity items
-- [x] Implement Portfolio at a glance card with progress bars
-- [x] Create progress bars for Active, Overdue, and Completed loans
-- [x] Calculate progress fractions based on kpis data
-- [x] Add total disbursed amount in card footer
-- [x] Make components responsive (sidebar on desktop, below content on tablet, stacked on mobile)
-- [x] Handle empty state for recent activity
+- [x] Create page header with title, total count, and action buttons (Export, Add Customer)
+- [x] Implement control bar with status filter tabs and search functionality
+- [x] Build customer data table using TanStack Table v8 with the following columns:
+  - NAME: Avatar, full name, and email subtext
+  - REFERENCE: Customer reference code
+  - PHONE: Customer phone number
+  - LOANS: Active loan count
+  - STATUS: Status badge (Active, Overdue, Completed)
+  - DATE ADDED: Customer creation date
+- [x] Implement pagination with navigation buttons and summary text
+- [x] Make table responsive with horizontal scrolling on small screens
+- [x] Implement filtering by status (All, Active, Overdue, Completed)
+- [x] Add search functionality by name or reference code
+- [x] Handle empty states when no customers match search criteria
+- [x] Ensure all counts dynamically reflect current data
 
 ## Notes
-This is Phase 4 of 4 for the Main Dashboard UI feature. This final phase focuses on implementing the Recent Activity feed and Portfolio at a glance summary in the right sidebar.
+This is Phase 1 of 3 for the Customer Management Module. This phase focuses on building the main directory view for customers at the `/customers` route. The implementation must translate the provided design exactly, featuring a robust data table with filtering, search, and pagination, adhering strictly to the project's Tailwind CSS v4 and Shadcn UI standards.
+
+## Technical Requirements
+- Use TanStack Table v8 for the data table
+- Implement server-side data fetching with mock data
+- Use `nuqs` for URL state management (filtering, search, pagination)
+- Ensure responsive design with horizontal scrolling on small screens
+- Handle dynamic count calculations for filter tabs
+- Implement proper empty states for search results
 
 ## History
 <!-- Keep this updated. Earliest to latest-->
