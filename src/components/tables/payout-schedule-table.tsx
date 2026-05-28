@@ -278,9 +278,8 @@ export default function PayoutScheduleTable() {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-[var(--color-surface-muted)]">
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
+            {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id} className="bg-[var(--color-surface-muted)]">
                   {headerGroup.headers.map(header => (
                     <th
                       key={header.id}
@@ -295,7 +294,6 @@ export default function PayoutScheduleTable() {
                   ))}
                 </tr>
               ))}
-            </tr>
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (

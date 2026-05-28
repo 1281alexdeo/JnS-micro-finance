@@ -29,34 +29,44 @@ const statusText = {
   NO_LOAN: 'No Loan'
 }
 
-export default function CustomerDetailPage({ params }: { params: { id: string } }) {
+export default function CustomerDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const [customer, setCustomer] = useState<Customer | null>(null)
   const [customerLoans, setCustomerLoans] = useState<Loan[]>([])
 
   // Find customer and associated loans
   useEffect(() => {
-    const foundCustomer = customers.find(c => c.id === params.id)
-    if (foundCustomer) {
-      setCustomer(foundCustomer)
-      const associatedLoans = loans.filter(loan => loan.customerId === params.id)
-      setCustomerLoans(associatedLoans)
+    const loadData = async () => {
+      const { id } = await params
+      const foundCustomer = customers.find(c => c.id === id)
+      if (foundCustomer) {
+        setCustomer(foundCustomer)
+        const associatedLoans = loans.filter(loan => loan.customerId === id)
+        setCustomerLoans(associatedLoans)
+      }
     }
-  }, [params.id])
+    loadData()
+  }, [params])
 
   // Calculate customer KPIs
-  const customerKPIs = customer ? {
-    activeLoans: customerLoans.filter(loan => loan.status === 'ACTIVE').length,
-    totalOutstanding: customerLoans
-      .filter(loan => loan.status === 'ACTIVE')
-      .reduce((sum, loan) => sum + loan.outstandingBalance, 0),
-    totalPaid: customerLoans
-      .filter(loan => loan.status === 'COMPLETED')
-      .reduce((sum, loan) => sum + loan.totalPaid, 0)
-  } : {
-    activeLoans: 0,
-    totalOutstanding: 0,
-    totalPaid: 0
-  }
+  const customerKPIs = useMemo(() => {
+    if (!customer) {
+      return {
+        activeLoans: 0,
+        totalOutstanding: 0,
+        totalPaid: 0
+      }
+    }
+
+    return {
+      activeLoans: customerLoans.filter(loan => loan.status === 'ACTIVE').length,
+      totalOutstanding: customerLoans
+        .filter(loan => loan.status === 'ACTIVE')
+        .reduce((sum, loan) => sum + loan.outstandingBalance, 0),
+      totalPaid: customerLoans
+        .filter(loan => loan.status === 'COMPLETED')
+        .reduce((sum, loan) => sum + loan.totalPaid, 0)
+    }
+  }, [customer, customerLoans])
 
   // Table columns for loan history
   const columns = useMemo<ColumnDef<Loan, unknown>[]>(
