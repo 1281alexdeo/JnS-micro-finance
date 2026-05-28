@@ -12,20 +12,22 @@ import {
 import { customers, type Customer } from '@/lib/mock-data'
 
 // Status type
-type Status = 'ALL' | 'ACTIVE' | 'OVERDUE' | 'COMPLETED'
+type Status = 'ALL' | 'ACTIVE' | 'OVERDUE' | 'COMPLETED' | 'NO_LOAN'
 
 // Status badge colors
 const statusColors = {
   ACTIVE: 'text-green-600 bg-green-50',
   OVERDUE: 'text-red-600 bg-red-50',
-  COMPLETED: 'text-gray-600 bg-gray-50'
+  COMPLETED: 'text-gray-600 bg-gray-50',
+  NO_LOAN: 'text-gray-400 bg-gray-100'
 }
 
 // Status display text
 const statusText = {
   ACTIVE: 'Active',
   OVERDUE: 'Overdue',
-  COMPLETED: 'Completed'
+  COMPLETED: 'Completed',
+  NO_LOAN: 'No Loan'
 }
 
 export default function CustomersPage() {

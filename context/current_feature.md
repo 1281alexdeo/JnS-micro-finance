@@ -1,38 +1,43 @@
 # Current Feature
 
 <!-- Feature name and short description -->
-Customer Management UI - Phase 1: Customer List View
+Customer Management UI - Phase 2: Customer Detail View
 
 ## Status
 In Progress
 
 ## Goals
-- [x] Create page header with title, total count, and action buttons (Export, Add Customer)
-- [x] Implement control bar with status filter tabs and search functionality
-- [x] Build customer data table using TanStack Table v8 with the following columns:
-  - NAME: Avatar, full name, and email subtext
-  - REFERENCE: Customer reference code
-  - PHONE: Customer phone number
-  - LOANS: Active loan count
-  - STATUS: Status badge (Active, Overdue, Completed)
-  - DATE ADDED: Customer creation date
-- [x] Implement pagination with navigation buttons and summary text
-- [x] Make table responsive with horizontal scrolling on small screens
-- [x] Implement filtering by status (All, Active, Overdue, Completed)
-- [x] Add search functionality by name or reference code
-- [x] Handle empty states when no customers match search criteria
-- [x] Ensure all counts dynamically reflect current data
+- [x] Create page header with back navigation, customer name, status badge, reference code, and action buttons (Edit, New Loan)
+- [x] Implement Profile Information card with responsive grid layout
+- [x] Add Customer KPI strip showing active loans, total outstanding, and total paid
+- [x] Build Loan History table with loan reference, amount, term, start date, and status columns
+- [x] Make layout fully responsive (3 columns desktop, 2 columns tablet, 1 column mobile)
+- [x] Disable "New Loan" button when customer status is OVERDUE
+- [x] Handle empty states for customers with no loan history
+- [x] Display placeholder text for optional fields (Email, National ID, Address)
+- [x] Implement `/customers/[id]` route with dynamic customer ID parameter
+- [x] Fetch customer data and associated loans server-side
 
 ## Notes
-This is Phase 1 of 3 for the Customer Management Module. This phase focuses on building the main directory view for customers at the `/customers` route. The implementation must translate the provided design exactly, featuring a robust data table with filtering, search, and pagination, adhering strictly to the project's Tailwind CSS v4 and Shadcn UI standards.
+This is Phase 2 of 3 for the Customer Management Module. This phase focuses on building the individual customer profile view at the `/customers/[id]` route. The implementation must maintain pixel-perfect standards established in Phase 1, utilizing the layout patterns from the dashboard and data structures from `mock-data.ts`.
+
+## Design Requirements
+- Header area with back navigation, customer name, status badge, and reference code
+- Profile Information card with responsive grid layout
+- Customer KPI strip showing relevant metrics
+- Loan History table with consistent styling from dashboard
+- Fully responsive layout that stacks on mobile devices
 
 ## Technical Requirements
-- Use TanStack Table v8 for the data table
-- Implement server-side data fetching with mock data
-- Use `nuqs` for URL state management (filtering, search, pagination)
-- Ensure responsive design with horizontal scrolling on small screens
-- Handle dynamic count calculations for filter tabs
-- Implement proper empty states for search results
+- Create dynamic route `/customers/[id]` with Next.js App Router
+- Implement server-side data fetching using customer ID from URL parameters
+- Calculate customer-specific KPIs (active loans, total outstanding, total paid)
+- Display associated loans in a table with TanStack Table v8
+- Handle empty states for customers with no loan history
+- Implement proper disabled states for "New Loan" button when customer is overdue
+- Use consistent styling from dashboard components
+- Ensure responsive grid layouts for all sections
+- Optional fields should display placeholders when null
 
 ## History
 <!-- Keep this updated. Earliest to latest-->
