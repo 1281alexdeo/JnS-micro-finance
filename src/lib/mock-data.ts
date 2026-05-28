@@ -71,6 +71,7 @@ export interface DashboardData {
     thisWeeksExpectedCollections: number;
     thisMonthsExpectedCollections: number;
     overdueCount: number;
+    completedLoans: number;
   };
   weeklyPayouts: {
     id: string;
@@ -97,7 +98,8 @@ export const mockData: DashboardData = {
     totalOutstandingBalance: 42560.00,
     thisWeeksExpectedCollections: 3420.00,
     thisMonthsExpectedCollections: 13680.00,
-    overdueCount: 3
+    overdueCount: 3,
+    completedLoans: 156
   },
   weeklyPayouts: [
     {

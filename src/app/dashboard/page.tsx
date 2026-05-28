@@ -1,5 +1,7 @@
 import { mockData } from '@/lib/mock-data'
 import PayoutScheduleTable from '@/components/tables/payout-schedule-table'
+import RecentActivityCard from '@/components/cards/recent-activity-card'
+import PortfolioSummaryCard from '@/components/cards/portfolio-summary-card'
 import { Suspense } from 'react'
 
 export default function DashboardPage() {
@@ -72,9 +74,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-2 gap-8">
-        {/* Payout Schedule */}
-        <section className="col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Payout Schedule - takes full width on mobile, 2 columns on desktop */}
+        <section className="lg:col-span-2">
           <h2 className="text-h2 mb-2">Payout Schedule</h2>
           <p className="text-caption mb-6">Instalments due in the current period</p>
           <div className="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)]">
@@ -84,22 +86,29 @@ export default function DashboardPage() {
           </div>
         </section>
 
-        {/* Recent Activity */}
-        <section>
-          <h2 className="text-h2 mb-6">Recent Activity</h2>
-          <div className="p-6 rounded-lg border border-[var(--color-border)]">
-            <div className="text-body">Activity feed will be implemented in Phase 2</div>
-          </div>
-        </section>
+        {/* Sidebar Components - hidden on desktop, shown below on mobile/tablet */}
+        <div className="space-y-6">
+          {/* Recent Activity */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <RecentActivityCard />
+          </Suspense>
+
+          {/* Portfolio Summary */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <PortfolioSummaryCard />
+          </Suspense>
+        </div>
       </div>
 
-      {/* Portfolio Overview */}
-      <section>
-        <h2 className="text-h2 mb-6">Portfolio Overview</h2>
-        <div className="p-6 rounded-lg border border-[var(--color-border)]">
-          <div className="text-body">Portfolio charts will be implemented in Phase 3</div>
-        </div>
-      </section>
+      {/* Mobile Sidebar Components - shown on mobile only, hidden on desktop */}
+      <div className="lg:hidden space-y-6 mt-8">
+        <Suspense fallback={<div>Loading...</div>}>
+          <RecentActivityCard />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PortfolioSummaryCard />
+        </Suspense>
+      </div>
     </div>
   )
 }
