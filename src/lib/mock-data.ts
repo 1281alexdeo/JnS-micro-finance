@@ -85,6 +85,129 @@ export interface DashboardData {
   recentActivity: RecentActivity[];
 }
 
+export const customers: Customer[] = [
+  {
+    id: 'c-1',
+    referenceCode: 'MF-00042',
+    firstName: 'John',
+    lastName: 'Smith',
+    phone: '+677 7421 668',
+    email: 'john.smith@email.com',
+    activeLoans: 2,
+    totalLoans: 3,
+    status: 'ACTIVE',
+    createdAt: '2026-01-15'
+  },
+  {
+    id: 'c-2',
+    referenceCode: 'MF-00043',
+    firstName: 'Emily',
+    lastName: 'Johnson',
+    phone: '+677 7421 669',
+    email: 'emily.johnson@email.com',
+    activeLoans: 1,
+    totalLoans: 2,
+    status: 'ACTIVE',
+    createdAt: '2026-01-20'
+  },
+  {
+    id: 'c-3',
+    referenceCode: 'MF-00044',
+    firstName: 'Michael',
+    lastName: 'Brown',
+    phone: '+677 7421 670',
+    email: 'michael.brown@email.com',
+    activeLoans: 0,
+    totalLoans: 1,
+    status: 'COMPLETED',
+    createdAt: '2026-01-25'
+  },
+  {
+    id: 'c-4',
+    referenceCode: 'MF-00045',
+    firstName: 'Sarah',
+    lastName: 'Davis',
+    phone: '+677 7421 671',
+    email: 'sarah.davis@email.com',
+    activeLoans: 1,
+    totalLoans: 1,
+    status: 'OVERDUE',
+    createdAt: '2026-02-01'
+  },
+  {
+    id: 'c-5',
+    referenceCode: 'MF-00046',
+    firstName: 'David',
+    lastName: 'Wilson',
+    phone: '+677 7421 672',
+    email: 'david.wilson@email.com',
+    activeLoans: 2,
+    totalLoans: 2,
+    status: 'ACTIVE',
+    createdAt: '2026-02-05'
+  },
+  {
+    id: 'c-6',
+    referenceCode: 'MF-00047',
+    firstName: 'Lisa',
+    lastName: 'Garcia',
+    phone: '+677 7421 673',
+    email: 'lisa.garcia@email.com',
+    activeLoans: 1,
+    totalLoans: 1,
+    status: 'OVERDUE',
+    createdAt: '2026-02-10'
+  },
+  {
+    id: 'c-7',
+    referenceCode: 'MF-00048',
+    firstName: 'Robert',
+    lastName: 'Martinez',
+    phone: '+677 7421 674',
+    email: 'robert.martinez@email.com',
+    activeLoans: 0,
+    totalLoans: 1,
+    status: 'COMPLETED',
+    createdAt: '2026-02-15'
+  },
+  {
+    id: 'c-8',
+    referenceCode: 'MF-00049',
+    firstName: 'Jennifer',
+    lastName: 'Anderson',
+    phone: '+677 7421 675',
+    email: 'jennifer.anderson@email.com',
+    activeLoans: 1,
+    totalLoans: 1,
+    status: 'ACTIVE',
+    createdAt: '2026-02-20'
+  },
+  {
+    id: 'c-9',
+    referenceCode: 'MF-00050',
+    firstName: 'James',
+    lastName: 'Taylor',
+    phone: '+677 7421 676',
+    email: 'james.taylor@email.com',
+    activeLoans: 0,
+    totalLoans: 2,
+    status: 'COMPLETED',
+    createdAt: '2026-02-25'
+  },
+  {
+    id: 'c-10',
+    referenceCode: 'MF-00051',
+    firstName: 'Mary',
+    lastName: 'Thomas',
+    phone: '+677 7421 677',
+    email: 'mary.thomas@email.com',
+    activeLoans: 1,
+    totalLoans: 1,
+    status: 'ACTIVE',
+    createdAt: '2026-03-01'
+  }
+];
+
 export const mockData: DashboardData = {
   user: {
     id: 'user-1',

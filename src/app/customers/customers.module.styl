@@ -1,0 +1,284 @@
+// Customer List View Styles
+.customers-page
+  padding 24px
+
+.table-container
+  overflow-x auto
+
+  table
+    width 100%
+
+    thead
+      background-color #f5f5f5
+      border-bottom 1px solid #e5e5e5
+      th
+        padding 12px 24px
+        height 40px
+        font-size 12px
+        font-weight 500
+        text-transform uppercase
+        color #666666
+        text-align left
+
+    tbody
+      tr
+        height 64px
+        border-bottom 1px solid #e5e5e5
+        padding 12px 24px
+        &:hover
+          background-color #f9f9f9
+
+        td
+          padding 12px 24px
+          white-space nowrap
+
+          .status-badge
+            display inline-flex
+            align-items center
+            justify-content center
+            padding 4px 8px
+            border-radius 9999px
+            font-size 12px
+            font-weight 500
+
+          .status-active
+            color #059669
+            background-color #ecfdf5
+
+          .status-overdue
+            color #c41e3a
+            background-color #fee2e2
+
+          .status-completed
+            color #666666
+            background-color #f0f0f0
+
+          .reference-code
+            font-size 13px
+            font-family ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+            background-color #f5f5f5
+            padding 2px 6px
+            border-radius 4px
+
+          .phone-text
+            font-size 13px
+            font-family ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+
+          .avatar
+            width 32px
+            height 32px
+            border-radius 9999px
+            background-color #f0f0f0
+            display flex
+            align-items center
+            justify-center
+            font-size 12px
+            font-weight 500
+            color #666666
+
+          .name-container
+            display flex
+            flex-direction column
+            gap 2px
+
+            .name-text
+              font-size 14px
+              font-weight 500
+
+            .email-text
+              font-size 12px
+              color #666666
+
+          .loans-count
+            font-size 14px
+            text-align center
+
+          .date-text
+            font-size 14px
+            text-align right
+            white-space nowrap
+
+// Responsive styles
+@media (max-width 768px)
+  .customers-page
+    padding 16px
+
+  .table-container
+    table
+      th, td
+        padding 8px 12px
+
+      .name-container
+        gap 4px
+
+        .name-text
+          font-size 12px
+
+        .email-text
+          font-size 11px
+
+      .reference-code
+        font-size 11px
+        padding 1px 4px
+
+      .phone-text
+        font-size 11px
+
+      .avatar
+        width 28px
+        height 28px
+        font-size 11px
+
+      .loans-count
+        font-size 12px
+
+      .date-text
+        font-size 12px
+
+// Search input styling
+.search-input
+  position relative
+  width 100%
+  max-width 300px
+
+  input
+    width 100%
+    padding 9px 36px 9px 36px
+    border 1px solid #d0d0d0
+    border-radius 6px
+    height 36px
+    font-size 14px
+    font-weight 400
+    color #a0a0a0
+    background-color white
+
+    &::placeholder
+      color #a0a0a0
+
+  .search-icon
+    position absolute
+    left 12px
+    top 50%
+    transform translateY(-50%)
+    width 16px
+    height 16px
+    color #666666
+
+// Filter tabs styling
+.filter-tabs
+  display flex
+  flex-wrap wrap
+  gap 16px
+  align-items center
+
+  .filter-tab
+    font-size 14px
+    font-weight 500
+    padding 4px 0
+    cursor pointer
+    transition all 0.2s ease
+    border-bottom 2px solid transparent
+
+    &:hover
+      color #333
+
+    &.active
+      color #1b7b6b
+      border-bottom-color #1b7b6b
+
+    &.inactive
+      color #888888
+
+// Header styles
+.page-header
+  margin-bottom 24px
+
+  h1
+    font-size 24px
+    font-weight 600
+    font-family Sora, sans-serif
+
+  .subtitle
+    font-size 12px
+    font-weight 400
+    color #666666
+    margin-top 4px
+
+  .action-buttons
+    display flex
+    gap 12px
+    justify-content flex-end
+    margin-top 16px
+
+    .btn
+      display flex
+      align-items center
+      gap 8px
+      padding 0 16px
+      height 36px
+      font-size 14px
+      font-weight 500
+      border-radius 6px
+      cursor pointer
+      transition all 0.2s ease
+
+      &.btn-secondary
+        background-color white
+        border 1px solid #d0d0d0
+        color #333
+
+        &:hover
+          background-color #f5f5f5
+
+      &.btn-primary
+        background-color #1b7b6b
+        color white
+
+        &:hover
+          background-color #166d5e
+
+// Empty state
+.empty-state
+  padding 48px 12px
+  text-align center
+
+  .empty-text
+    font-size 14px
+    color #666666
+
+// Pagination
+.pagination
+  background-color white
+  border-top 1px solid #e5e5e5
+  padding 16px 24px
+  display flex
+  justify-content space-between
+  align-items center
+
+  .pagination-info
+    font-size 14px
+    color #666666
+
+    .pagination-count
+      font-weight 500
+
+  .pagination-controls
+    display flex
+    gap 8px
+
+    .pagination-btn
+      padding 8px 12px
+      font-size 14px
+      border 1px solid #d0d0d0
+      border-radius 6px
+      background-color white
+      color #333
+      cursor pointer
+      transition all 0.2s ease
+
+      &:hover:not(:disabled)
+        background-color #f5f5f5
+
+      &:disabled
+        opacity 0.5
+        cursor not-allowed
