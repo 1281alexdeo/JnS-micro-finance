@@ -79,6 +79,7 @@ export interface DashboardData {
     weeklyAmount: number;
     dueDate: string;
     status: 'UPCOMING' | 'PAID' | 'OVERDUE';
+    penaltyAmount?: number;
   }[];
   recentActivity: RecentActivity[];
 }
@@ -121,7 +122,8 @@ export const mockData: DashboardData = {
       loanReference: 'LOAN-00125',
       weeklyAmount: 15.75,
       dueDate: '2026-05-27',
-      status: 'UPCOMING'
+      status: 'UPCOMING',
+      penaltyAmount: 2.36
     },
     {
       id: 'wp-4',
@@ -137,7 +139,8 @@ export const mockData: DashboardData = {
       loanReference: 'LOAN-00127',
       weeklyAmount: 19.88,
       dueDate: '2026-05-28',
-      status: 'OVERDUE'
+      status: 'OVERDUE',
+      penaltyAmount: 9.94
     },
     {
       id: 'wp-6',
@@ -161,6 +164,40 @@ export const mockData: DashboardData = {
       loanReference: 'LOAN-00130',
       weeklyAmount: 87.50,
       dueDate: '2026-05-29',
+      status: 'OVERDUE',
+      penaltyAmount: 15.63
+    },
+    {
+      id: 'wp-9',
+      customerName: 'Maria Garcia',
+      loanReference: 'LOAN-00131',
+      weeklyAmount: 34.25,
+      dueDate: '2026-05-30',
+      status: 'UPCOMING'
+    },
+    {
+      id: 'wp-10',
+      customerName: 'James Taylor',
+      loanReference: 'LOAN-00132',
+      weeklyAmount: 28.50,
+      dueDate: '2026-05-30',
+      status: 'PAID'
+    },
+    {
+      id: 'wp-11',
+      customerName: 'Anna Miller',
+      loanReference: 'LOAN-00133',
+      weeklyAmount: 45.75,
+      dueDate: '2026-05-31',
+      status: 'UPCOMING',
+      penaltyAmount: 5.88
+    },
+    {
+      id: 'wp-12',
+      customerName: 'Chris Wilson',
+      loanReference: 'LOAN-00134',
+      weeklyAmount: 52.25,
+      dueDate: '2026-06-01',
       status: 'UPCOMING'
     }
   ],

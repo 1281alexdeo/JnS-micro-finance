@@ -1,4 +1,6 @@
 import { mockData } from '@/lib/mock-data'
+import PayoutScheduleTable from '@/components/tables/payout-schedule-table'
+import { Suspense } from 'react'
 
 export default function DashboardPage() {
   const { kpis } = mockData
@@ -72,10 +74,13 @@ export default function DashboardPage() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-2 gap-8">
         {/* Payout Schedule */}
-        <section>
-          <h2 className="text-h2 mb-6">Weekly Payout Schedule</h2>
-          <div className="p-6 rounded-lg border border-[var(--color-border)]">
-            <div className="text-body">Payout table will be implemented in Phase 2</div>
+        <section className="col-span-2">
+          <h2 className="text-h2 mb-2">Payout Schedule</h2>
+          <p className="text-caption mb-6">Instalments due in the current period</p>
+          <div className="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)]">
+            <Suspense fallback={<div>Loading table...</div>}>
+              <PayoutScheduleTable />
+            </Suspense>
           </div>
         </section>
 
