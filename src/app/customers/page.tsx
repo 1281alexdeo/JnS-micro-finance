@@ -10,6 +10,7 @@ import {
   type ColumnDef
 } from '@tanstack/react-table'
 import { customers, type Customer } from '@/lib/mock-data'
+import { CustomerFormModal } from '@/components/customers/customer-form-modal'
 
 type Status = 'ALL' | 'ACTIVE' | 'OVERDUE' | 'COMPLETED' | 'NO_LOAN'
 
@@ -30,6 +31,8 @@ const statusText = {
 export default function CustomersPage() {
   const [statusValue, setStatusValue] = useState<Status>('ALL')
   const [searchValue, setSearchValue] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [nextReferenceCode, setNextReferenceCode] = useState('')
 
   const filteredCustomers = useMemo(() => {
     return customers.filter(customer => {
@@ -140,6 +143,17 @@ export default function CustomersPage() {
     completed: customers.filter(c => c.status === 'COMPLETED').length
   }), [])
 
+  const handleAddCustomer = () => {
+    const nextId = Math.max(...customers.map(c => parseInt(c.id.split('-')[1]))) + 1
+    const referenceCode = `MF-${String(nextId + 41).padStart(5, '0')}`
+    setNextReferenceCode(referenceCode)
+    setIsModalOpen(true)
+  }
+
+  const handleModalSuccess = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="p-6 space-y-6">
       {/* Page Header */}
@@ -155,7 +169,10 @@ export default function CustomersPage() {
             </svg>
             Export
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-md text-sm font-medium">
+          <button
+            onClick={handleAddCustomer}
+            className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-md text-sm font-medium hover:bg-teal-700 transition-colors"
+          >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
@@ -321,6 +338,13 @@ export default function CustomersPage() {
           </div>
         </div>
       </div>
+
+      <CustomerFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={handleModalSuccess}
+        referenceCode={nextReferenceCode}
+      />
     </div>
   )
 }
