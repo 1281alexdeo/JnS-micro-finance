@@ -6,11 +6,6 @@ export const metadata: Metadata = {
   description: 'Customer Profile Details - LoanTrack Microfinance System',
 }
 
-interface CustomerLayoutProps {
-  children: ReactNode
-  params: Promise<{ id: string }>
-}
-
-export default function CustomerLayout({ children, params }: CustomerLayoutProps) {
+export default function CustomerLayout({ children }: { children: ReactNode }) {
   return <div>{children}</div>
 }
