@@ -328,4 +328,3 @@ export default function CustomerDetailPage({ params }: { params: Promise<{ id: s
     </div>
   )
 }
-
