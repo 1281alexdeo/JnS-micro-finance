@@ -32,16 +32,27 @@ const statusText = {
 export default function CustomerDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const [customer, setCustomer] = useState<Customer | null>(null)
   const [customerLoans, setCustomerLoans] = useState<Loan[]>([])
+  const [loading, setLoading] = useState(true)
 
   // Find customer and associated loans
   useEffect(() => {
     const loadData = async () => {
-      const { id } = await params
-      const foundCustomer = customers.find(c => c.id === id)
-      if (foundCustomer) {
-        setCustomer(foundCustomer)
-        const associatedLoans = loans.filter(loan => loan.customerId === id)
-        setCustomerLoans(associatedLoans)
+      try {
+        setLoading(true)
+        const { id } = await params
+        console.log('Loading customer with id:', id)
+        const foundCustomer = customers.find(c => c.id === id)
+        console.log('Found customer:', foundCustomer)
+        if (foundCustomer) {
+          setCustomer(foundCustomer)
+          const associatedLoans = loans.filter(loan => loan.customerId === id)
+          console.log('Associated loans:', associatedLoans)
+          setCustomerLoans(associatedLoans)
+        }
+      } catch (error) {
+        console.error('Error loading customer:', error)
+      } finally {
+        setLoading(false)
       }
     }
     loadData()
@@ -131,6 +142,17 @@ export default function CustomerDetailPage({ params }: { params: Promise<{ id: s
     getFilteredRowModel: getFilteredRowModel(),
     state: {}
   })
+
+  if (loading) {
+    return (
+      <div className="p-6">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading customer details...</p>
+        </div>
+      </div>
+    )
+  }
 
   if (!customer) {
     return (
