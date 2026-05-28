@@ -278,24 +278,22 @@ export default function PayoutScheduleTable() {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-[var(--color-surface-muted)]">
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map(header => (
-                    <th
-                      key={header.id}
-                      className={`text-left text-label uppercase px-4 py-3 ${header.column.getCanSort() ? 'cursor-pointer hover:bg-[var(--color-surface)]' : ''}`}
-                      onClick={header.column.getToggleSortingHandler()}
-                    >
-                      <div className="flex items-center gap-2">
-                        {header.column.columnDef.header as string}
-                        {{ asc: '↑', desc: '↓' }[header.column.getIsSorted() as string] ?? null}
-                      </div>
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </tr>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className="bg-[var(--color-surface-muted)]">
+                {headerGroup.headers.map(header => (
+                  <th
+                    key={header.id}
+                    className={`text-left text-label uppercase px-4 py-3 ${header.column.getCanSort() ? 'cursor-pointer hover:bg-[var(--color-surface)]' : ''}`}
+                    onClick={header.column.getToggleSortingHandler()}
+                  >
+                    <div className="flex items-center gap-2">
+                      {header.column.columnDef.header as string}
+                      {{ asc: '↑', desc: '↓' }[header.column.getIsSorted() as string] ?? null}
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            ))}
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (
