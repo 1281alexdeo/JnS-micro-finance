@@ -125,3 +125,6 @@ No test configuration is currently set up. When adding tests, consider:
 - Minimal re-renders with `React.memo`, `useCallback`, `useMemo`
 - Component specificity: BEM-like with Stylus modules
 - CSS classes: left-aligned text, right-aligned currency (monospace)
+
+## Prompt Shortcuts
+- whenever I input "clear @context/current_feature.md" :I want you to clear information under headings Curent Feature, Goals, and Notes, while while preserving the history section and comments for the other section.
